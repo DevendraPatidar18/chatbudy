@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "140029745218",
+    "project_id": "chatbudy-4c0f3",
+    "storage_bucket": "chatbudy-4c0f3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140029745218:android:2ea994373603006d5bb5db",
+        "android_client_info": {
+          "package_name": "com.example.chatbudy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5EA6NBrxalF6LTxbY5hxbjXcRRtwRBq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
