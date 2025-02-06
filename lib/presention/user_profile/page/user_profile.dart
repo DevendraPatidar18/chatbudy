@@ -149,8 +149,8 @@ class _UserProfileState extends State<UserProfile> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         TextButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
               AppNavigator.pushAndRemove(context, SignIn());
             },
             style: ButtonStyle(
@@ -166,7 +166,7 @@ class _UserProfileState extends State<UserProfile> {
   Widget _aboutUs() {
     return InkWell(
       onTap: (){
-        AppNavigator.push(context, AboutUs());
+        AppNavigator.push(context,  AboutUs());
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

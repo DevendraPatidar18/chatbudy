@@ -9,7 +9,6 @@ import 'package:chatbudy/presention/splash/page/splash.dart';
 import 'package:chatbudy/presention/user_profile/bloc/update_user_profile_cubit.dart';
 import 'package:chatbudy/servicelocator.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';

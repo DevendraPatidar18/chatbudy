@@ -1,10 +1,6 @@
 {
   "title": "About Our App",
-<<<<<<< HEAD
-  "description": "Our app is designed to be simple and user-friendly. With just a few taps, you can start chatting with your friends and family. We also have a variety of features to make your conversations more fun and engaging.\n\nSure, here is a sample about us section for a chat app:\n\nWe believe that communication is key to building strong relationships. That's why we created this chat app, to make it easy for people to connect with each other, no matter where they are.\n\nWe're constantly working to improve our app and add new features. We hope you enjoy using it!",
-=======
   "description": "Our app is designed to be simple and user-friendly. With just a few taps, you can start chatting with your friends and family. We also have a variety of features to make your conversations more fun and engaging.\n\nWe believe that communication is key to building strong relationships. That's why we created this chat app, to make it easy for people to connect with each other, no matter where they are.\n\nWe're constantly working to improve our app and add new features. We hope you enjoy using it!",
->>>>>>> 9db4683 (adding about us feature)
   "company": "Devendra Patidar",
   "author": "Devendra Patidar",
   "email": "patidardevendra994@gmail.com",

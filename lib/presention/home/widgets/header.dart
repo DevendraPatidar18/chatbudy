@@ -15,25 +15,28 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40, right: 16, left: 16),
-      child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
-        builder: (context, state) {
-          if (state is UserInfoLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (state is UserInfoLoaded) {
-            return Row(
+    return BlocProvider(
+      create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 40, right: 16, left: 16),
+        child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
+          builder: (context, state) {
+            if (state is UserInfoLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state is UserInfoLoaded) {
+              return Row(
 
-              children: [
-                _profileImage(context,state.userEntity),
-                SizedBox(width: 25),
-                _userName(state.userEntity.name),
-              ],
-            );
-          }
-          return Container();
-        },
+                children: [
+                  _profileImage(context,state.userEntity),
+                  SizedBox(width: 25),
+                  _userName(state.userEntity.name),
+                ],
+              );
+            }
+            return Container();
+          },
+        ),
       ),
     );
   }
@@ -43,7 +46,7 @@ class Header extends StatelessWidget {
       create: (context) => UserInfoDisplayCubit(),
       child: GestureDetector(
         onTap: (){
-          AppNavigator.push(context,  UserProfile(user: user)) ;
+          AppNavigator.push(context,  BlocProvider(create: (context) => UserInfoDisplayCubit()..displayUserInfo(),child: UserProfile(user: user))) ;
         },
         child: CircleAvatar(
           radius: 20,
