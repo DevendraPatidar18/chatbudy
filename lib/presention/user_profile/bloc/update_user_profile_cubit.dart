@@ -10,8 +10,7 @@ class UpdateUserProfileCubit extends Cubit<UpdateUserProfileState>{
   UpdateUserProfileCubit() : super(UpdatingUserProfile());
 
   void updateUserProfile(Map<String,String> userData) async {
-    print('update user cubit');
-    var data = await sl<UpdateUserProfileUseCase>().call(params: userData);
+    await sl<UpdateUserProfileUseCase>().call(params: userData);
 
   }
 

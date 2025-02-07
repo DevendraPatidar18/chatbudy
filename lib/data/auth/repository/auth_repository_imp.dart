@@ -26,16 +26,7 @@ class AuthRepositoryImp extends AuthRepository{
   @override
   Stream<Either<String,DocumentSnapshot<Map<String,dynamic>>>> getUser() {
     var user = sl<AuthFirebaseService>().getUser().map<Either<String,DocumentSnapshot<Map<String,dynamic>>>>((data) => right(data))..handleError((error) => Left(error.toString()));
-    return user;/*user.fold(
-            (error){
-          return left(error);
-        },
-            (data){
-              print('User Id of current loging user ${UserModel.fromMap(data).toEntity().uid}');
-          return right(UserModel.fromMap(data).toEntity());
-
-        }*/
-    //);
+    return user;
   }
   @override
   Future<Either<String, UserEntity>> getUsers(String email) async {

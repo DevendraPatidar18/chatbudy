@@ -2,7 +2,6 @@ import 'package:chatbudy/comman/bloc/button/button_state.dart';
 import 'package:chatbudy/comman/bloc/button/button_state_cubit.dart';
 import 'package:chatbudy/comman/helper/navigator/app_navigator.dart';
 import 'package:chatbudy/comman/widgets/appbar/app_bar.dart';
-import 'package:chatbudy/comman/widgets/button/basic_app_button.dart';
 import 'package:chatbudy/comman/widgets/button/basic_reactive_button.dart';
 import 'package:chatbudy/core/theme/app_colors.dart';
 import 'package:chatbudy/data/auth/models/user_creation_req.dart';
@@ -63,23 +62,7 @@ class SignUp extends StatelessWidget {
                       ],
                     ),
                   ),
-                  /*child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _signUpText(context),
-              const SizedBox(height: 20),
-              _firstNameField(context),
-              const SizedBox(height: 20),
-              _emailField(context),
-              const SizedBox(height: 20),
-              _passwordField(context),
-              const SizedBox(height: 20),
-              _continueButton(context),
-              const SizedBox(height: 20),
-              _signUp(context),
-            ],
-          ),
-        ),*/
+
                 ))));
   }
 

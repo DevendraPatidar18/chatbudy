@@ -71,7 +71,6 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
   @override
   Future<bool> isLoggedIn() async {
     bool? flag = false;
-    print('Cheking the user credential');
     await FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user != null) {
         flag = true;
@@ -88,8 +87,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
       var userData =  FirebaseFirestore.instance
           .collection('Users')
           .doc(currentUser?.uid).snapshots();
-         /* .get()
-          .then((value) => value.data());*/
+
       return userData;
   }
 
@@ -116,7 +114,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
 
       print(users.docs.length);
       print(users.docs.first.data());
-      return right(/*users.docs.first.data()*/users.docs.first.data());
+      return right(users.docs.first.data());
     }catch(e){
       print(e.toString());
       return left('Please try again');
@@ -126,7 +124,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
 
   @override
   Future<Either<String,Map<String,dynamic>>> updateUserProfile(Map<String, String> userdata) async {
-    print('update user service $userdata');
+
     try {
       if (userdata['username'] != null && userdata['bio'] != null && userdata['uid'] != null) {
         FirebaseFirestore.instance
@@ -139,7 +137,6 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
       var updatedData = await FirebaseFirestore.instance.collection('Users')
           .where('uid', isEqualTo: userdata['uid'])
           .get();
-      print(updatedData.docs.first.data().toString());
       return right(updatedData.docs.first.data());
     }catch(e){
       return left('Data not found');

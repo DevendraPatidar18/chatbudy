@@ -5,7 +5,6 @@ import 'package:chatbudy/presention/auth/pages/signin.dart';
 import 'package:chatbudy/presention/home/bloc/user_info_diaplay_state.dart';
 import 'package:chatbudy/presention/home/bloc/user_info_display_cubit.dart';
 import 'package:chatbudy/presention/user_profile/bloc/update_user_profile_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -233,8 +232,4 @@ class _UserProfileState extends State<UserProfile> {
       },
     );
   }
-
-  String username = "JohnDoe";
-
-  String bio = "Flutter Developer 🚀";
 }

@@ -12,7 +12,6 @@ class GetFirebaseUsersUseCase implements UseCase<Either,String>{
       return await sl<AuthRepository>().getUsers(params);
     }else{
       var data =  await sl<AuthRepository>().getUsersByUid(params);
-      print('Data in Use case ${data.toString()}');
       return data;
     }
   }

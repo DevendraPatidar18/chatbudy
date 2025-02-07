@@ -72,12 +72,10 @@ class ChatListView extends StatelessWidget {
                 final participantKeys =
                     ((participants.keys.toList()..remove(currentUserId)));
                 String targetUserId = participantKeys.first;
-                print('targetUserId : $targetUserId');
 
                 return FutureBuilder<UserEntity?>(
                     future: _getParticipants(context, targetUserId),
                     builder: (context, snapshot) {
-                      print("snapshot data ${snapshot.data}");
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return ListTile(
                           leading: CircularProgressIndicator(),
@@ -131,7 +129,6 @@ class ChatListView extends StatelessWidget {
 
   Future<UserEntity?> _getParticipants(
       BuildContext context, String participantKeys) async {
-    print('hello');
     var data =
         await context.read<SearchStateCubit>().searchUserByUid(participantKeys);
     print(data.name);

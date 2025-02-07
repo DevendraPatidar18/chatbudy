@@ -3,7 +3,6 @@ import 'package:chatbudy/core/theme/app_colors.dart';
 import 'package:chatbudy/domain/auth/entity/entity.dart';
 import 'package:chatbudy/presention/home/bloc/user_info_diaplay_state.dart';
 import 'package:chatbudy/presention/home/bloc/user_info_display_cubit.dart';
-import 'package:chatbudy/presention/user_profile/bloc/update_user_profile_cubit.dart';
 import 'package:chatbudy/presention/user_profile/page/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

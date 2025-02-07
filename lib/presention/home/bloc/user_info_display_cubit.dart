@@ -13,8 +13,7 @@ class UserInfoDisplayCubit extends Cubit<UserInfoDisplayState>{
 
   void displayUserInfo() async {
     _messageSubscription?.cancel();
-    print(
-        'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC');
+
     _messageSubscription = await sl<GetUserUseCaseimp>().call().listen(
           (result) {
         result.fold(

@@ -10,15 +10,13 @@ class SearchStateCubit extends Cubit<SearchState>{
   SearchStateCubit() : super(SearchStateLoading());
 
   void searchUser(String searchText) async {
-    var returnedData =/* await sl<GetFirebaseUsersUseCase>().call();*/
-    await sl<GetFirebaseUsersUseCase>().call(params: searchText);
+    var returnedData = await sl<GetFirebaseUsersUseCase>().call(params: searchText);
 
     returnedData.fold(
             (error){
           emit(SearchStateFailed(errorMessage: error));
         },
             (data){
-              print('target User data in search cubit ${data.toString()}');
           emit(SearchStateLoadedSuccessfull(userEntity: data)
           );
         });

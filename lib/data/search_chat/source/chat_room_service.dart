@@ -23,13 +23,9 @@ class ChatRoomServiceImp extends ChatRoomService {
   @override
   Future<Either<String, ChatRoomModel>> getChatRoom(
       String targetUserEmail) async {
-    print('present in chatroom service');
-    print(targetUserEmail);
     try {
-      print('in try block');
       var firebaseUser = _auth.currentUser?.uid;
       if (firebaseUser == null) {
-        print('user is null');
         return left('User not logged in');
       }
 
@@ -41,20 +37,16 @@ class ChatRoomServiceImp extends ChatRoomService {
           .get();
 
       if (targetUserSnapshot.docs.isEmpty) {
-        print('No target user found');
         return left('No target user found');
       }
 
       var targetUser = targetUserSnapshot.docs.first.id;
-      print('target user id $targetUser');
 
       // Check if the chatroom collection exists
       var chatroomCollectionSnapshot =
           await _firestore.collection('chatroom').get();
-      print('all chatRooms ${chatroomCollectionSnapshot.docs.length}');
 
       if (chatroomCollectionSnapshot.docs.isEmpty) {
-        print('No chatrooms exist, so create a new one');
         ChatRoomModel chatRoomModel = ChatRoomModel(
           chatRoomId: uuid.v1(),
           participants: {
@@ -82,7 +74,6 @@ class ChatRoomServiceImp extends ChatRoomService {
             isEqualTo: true,
           )
           .get();
-      print('chatRooms where user present ${userChatRooms.docs.length}');
 
       if ((userChatRooms.docs.isEmpty)) {
         // No matching chatroom exists
@@ -93,7 +84,7 @@ class ChatRoomServiceImp extends ChatRoomService {
             targetUser: true,
           },
         );
-        print('creating chatrome $chatRoomModel');
+
         await _firestore
             .collection('chatroom')
             .doc(chatRoomModel.chatRoomId)
@@ -104,28 +95,23 @@ class ChatRoomServiceImp extends ChatRoomService {
 
         return right(chatRoomModel);
       }
-      print('Now move forward');
-      // Look for an existing chatroom with both participants
-      /*var returnedData = userChatRooms.docs.firstWhere(
-            (doc) => doc['participants'][targetUser] == true);
 
-*/
+      // Look for an existing chatroom with both participants
+
       var returnedData = userChatRooms.docs
           .where(
             (doc) => doc['participants'][targetUser] == true,
           )
           .toList(); // Return null if no match is found
 
-      print('pass from the returned data');
+
 
       if (returnedData.isNotEmpty) {
-        print('Chatroom already exists');
         var chatRoomData = returnedData.first.data();
         ChatRoomModel existingChatRoom = ChatRoomModel.fromMap(chatRoomData);
         return right(existingChatRoom);
       } else {
         // No matching chatroom, create a new one
-        print('No chat found');
         ChatRoomModel chatRoomModel = ChatRoomModel(
           chatRoomId: uuid.v1(),
           participants: {
@@ -184,9 +170,6 @@ class ChatRoomServiceImp extends ChatRoomService {
   }
 
   Stream<List<ChatRoomModel>> getRecentChatroom() {
-    //List<ChatRoomModel> chatroomList = [];
-    /*var chatroomListSnapshot =  _firestore.collection('chatroom').where('participants.${_auth.currentUser!.uid}', isEqualTo: true)
-        .get();*/
     var data = _firestore
         .collection('chatroom')
         .where('participants.${_auth.currentUser!.uid}', isEqualTo: true)
@@ -195,21 +178,12 @@ class ChatRoomServiceImp extends ChatRoomService {
             .map((doc) => ChatRoomModel.fromMap(doc.data()))
             .toList());
     return data;
-    /*var listOfChtaroom = chatroomListSnapshot.then((value) => value.docs.map((e) => e.data()));
-    //var listOfChtaroom = chatroomListSnapshot.docs.map((e) => e.data());//then((value) => value.docs.map((e) => e.data()));
 
-    for(Map<String,dynamic>e in listOfChtaroom){
-      chatroomList.add(ChatRoomModel.fromMap(e));
-      print('ppppppppppppppppppppppppppppppppppppppppppppppppppppppppp');
-
-    }
-
-    print(*/ /*chatroomList[0].chatRoomId*/ /*'');*/
   }
 
   Future<Either<String, ChatBoardModel>> fetchChatGPTResponse(
       ChatBoardModel userMessage) async {
-    print(userMessage);
+
     try {
       print(dotenv.env['GEMINI_API_KEY']);
       final api_Key = dotenv.env['GEMINI_API_KEY'];
@@ -237,7 +211,6 @@ class ChatRoomServiceImp extends ChatRoomService {
 
         var mydata = data["candidates"][0]["content"]["parts"][0]["text"] ??
             "No response";
-        print('mydata $mydata');
         ChatBoardModel responseData =
             ChatBoardModel(Content: mydata, role: 'bot');
         return right(responseData);
@@ -247,7 +220,6 @@ class ChatRoomServiceImp extends ChatRoomService {
         return right(errorData);
       }
     } catch (e) {
-      print('Some error occure');
       return left('error while fetching response $e');
     }
   }

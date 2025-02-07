@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../chat_room/bloc/getmessages_cubit.dart';
-import '../../chat_room/bloc/getmessages_state.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen();
@@ -82,49 +80,7 @@ class ChatScreen extends StatelessWidget {
                   return Center(child: Text('Say Hi 🙋'));
                 },
               ),
-              /*FutureBuilder<ChatBoardModel>(
-                    future: chatMessageList.last,
-                    builder: (context,snapshot){
-                      print(snapshot.data);
-                  if(snapshot.connectionState == ConnectionState.waiting){
-                    return const Center(child: CircularProgressIndicator(color: AppColors.primary,));
-                  }else if(snapshot.hasError){
-                    return Center(child: Text('error occur'));
-                  }else if(snapshot.hasData){
-                    return ListView.separated(
-                        padding: EdgeInsets.all(12.0),
-                        separatorBuilder: (context , index){
-                          return const SizedBox(height: 8);
-                        },
-                        itemCount: 1,
-                        itemBuilder: (context, index) {
-                          final message = snapshot.data;
-                          print(('Response $message'));
-                          return Container(
 
-                            //mainAxisAlignment: (message.sender == currentUser.name? MainAxisAlignment.end :
-                            //MainAxisAlignment.start),
-
-                            child:  Container(
-                              width: 80,
-                              margin:  const EdgeInsets.symmetric(vertical: 2),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 10
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                //color: (message.sender == currentUser.name? AppColors.primary : AppColors.secondBackground)
-                              ),
-                              child: Text(message!.Content.replaceAll("**", ':- ')),
-                            ),
-
-                          );
-                        });
-
-                  }
-                  return Center(child: Text('Say Hii 🙋 '),);
-                    }),*/
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),

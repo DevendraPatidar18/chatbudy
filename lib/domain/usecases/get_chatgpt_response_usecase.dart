@@ -8,7 +8,6 @@ class GetChatGptResponseUseCase extends UseCase<Either ,dynamic> {
   @override
   Future<Either> call({dynamic params})async {
     var data = await sl<ChatRoomRepo>().getChatGptResponse(params);
-    print('data in UseCase $data');
     return data;
 }
 }

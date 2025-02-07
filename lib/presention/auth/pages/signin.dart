@@ -116,13 +116,6 @@ class SignIn extends StatelessWidget {
 
         }
     );
-    /*return BasicReactiveButton(onPressed: () {
-      UserSignInReq userData =
-          UserSignInReq(email: emailCon.text, password: passwordCon.text);
-      context
-          .read<ButtonStateCubit>()
-          .execute(useCase: SignInUseCase(), params: userData);
-    });*/
   }
 
   Widget _createAccount(BuildContext context) {
